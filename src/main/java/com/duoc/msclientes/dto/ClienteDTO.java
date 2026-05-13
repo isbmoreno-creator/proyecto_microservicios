@@ -1,22 +1,19 @@
-package com.duoc.msclientes.model;
-import jakarta.persistence.*;
-import lombok.*;
+package com.duoc.msclientes.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.List;
 
-@Entity
-@Table(name="cliente")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cliente {
+public class ClienteDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombre;
     private String apellido;
     private String rut;
@@ -25,8 +22,5 @@ public class Cliente {
     private Boolean activo;
     private LocalDate fechaRegistro;
     private Integer puntos;
-
-    @OneToMany(mappedBy = "cliente")
-    private List<Direccion> direcciones;
 
 }
