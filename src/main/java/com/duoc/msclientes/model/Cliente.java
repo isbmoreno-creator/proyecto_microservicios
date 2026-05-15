@@ -22,9 +22,9 @@ public class Cliente {
     private String rut;
     private String correo;
     private String telefono;
+    private Integer puntos;
     private Boolean activo;
     private LocalDate fechaRegistro;
-    private Integer puntos;
 
     @OneToMany(mappedBy = "cliente")
     private List<Direccion> direcciones;

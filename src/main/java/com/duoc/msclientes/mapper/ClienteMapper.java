@@ -3,7 +3,9 @@ package com.duoc.msclientes.mapper;
 import com.duoc.msclientes.dto.ClienteDTO;
 import com.duoc.msclientes.dto.ClienteRequestDTO;
 import com.duoc.msclientes.model.Cliente;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ClienteMapper {
 
     public static ClienteDTO toDTO(Cliente cliente){
@@ -14,9 +16,9 @@ public class ClienteMapper {
                 cliente.getRut(),
                 cliente.getCorreo(),
                 cliente.getTelefono(),
+                cliente.getPuntos(),
                 cliente.getActivo(),
-                cliente.getFechaRegistro(),
-                cliente.getPuntos()
+                cliente.getFechaRegistro()
         );
     }
     public static Cliente toEntity(ClienteRequestDTO dto){
@@ -26,9 +28,9 @@ public class ClienteMapper {
         cliente.setRut(dto.getRut());
         cliente.setCorreo(dto.getCorreo());
         cliente.setTelefono(dto.getTelefono());
+        cliente.setPuntos(dto.getPuntos());
         cliente.setActivo(dto.getActivo());
         cliente.setFechaRegistro(dto.getFechaRegistro());
-        cliente.setPuntos(dto.getPuntos());
         return cliente;
     }
 }

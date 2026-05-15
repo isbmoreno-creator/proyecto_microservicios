@@ -14,31 +14,33 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ClienteRequestDTO {
 
-    @NotBlank
-    @Size(min = 2, max = 100)
+    @NotBlank(message = "El nombre es obligatorio")
+    @Size(min = 2, max = 100, message = "El nombre debe tener entre 2 y 100 caracteres")
     private String nombre;
 
-    @NotBlank
-    @Size(min = 2, max = 100)
+    @NotBlank(message = "El apellido es obligatorio")
+    @Size(min = 2, max = 100, message = "El apellido debe tener entre 2 y 100 caracteres")
     private String apellido;
 
-    @NotBlank
+    @NotBlank(message = "El rut es obligatorio")
+    @Size(min = 8, max = 12, message = "Rut inválido")
     private String rut;
 
-    @Email
-    @NotBlank
+    @Email(message = "Correo inválido")
+    @NotBlank(message = "El correo es obligatorio")
     private String correo;
 
-    @NotBlank
+    @NotBlank(message = "El teléfono es obligatorio")
+    @Size(min = 8, max = 15, message = "Teléfono inválido")
     private String telefono;
 
-    @NotNull
+    @Positive(message = "Los puntos deben ser positivos")
+    private Integer puntos;
+
     private Boolean activo;
 
-    @NotNull
+    @NotNull(message = "La fecha es obligatoria")
+    @PastOrPresent(message = "La fecha no puede ser futura")
     private LocalDate fechaRegistro;
-
-    @Positive
-    private Integer puntos;
 
 }

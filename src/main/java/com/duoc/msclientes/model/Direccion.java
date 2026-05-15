@@ -18,10 +18,10 @@ public class Direccion {
     private String calle;
     private String numero;
     private String comuna;
-    private String ciudad;
+    private String region;
+    private Integer codigoPostal;
     private Boolean activa;
     private LocalDate fechaRegistro;
-    private Integer codigoPostal;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")

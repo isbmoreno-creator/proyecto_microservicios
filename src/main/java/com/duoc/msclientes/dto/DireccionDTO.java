@@ -11,16 +11,15 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClienteDTO {
+public class DireccionDTO {
 
     private Long id;
-    private String nombre;
-    private String apellido;
-    private String rut;
-    private String correo;
-    private String telefono;
-    private Integer puntos;
-    private Boolean activo;
+    private String calle;
+    private String numero;
+    private String comuna;
+    private String region;
+    private Integer codigoPostal;
+    private Boolean activa;
     private LocalDate fechaRegistro;
 
 }
