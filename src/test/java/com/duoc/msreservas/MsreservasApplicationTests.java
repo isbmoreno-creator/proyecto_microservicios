@@ -1,10 +1,10 @@
-package com.duoc.msvehiculo;
+package com.duoc.msreservas;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsvehiculoApplicationTests {
+class MsreservasApplicationTests {
 
 	@Test
 	void contextLoads() {

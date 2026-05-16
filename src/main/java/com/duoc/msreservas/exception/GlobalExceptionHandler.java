@@ -1,4 +1,4 @@
-package com.duoc.msvehiculo.exception;
+package com.duoc.msreservas.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

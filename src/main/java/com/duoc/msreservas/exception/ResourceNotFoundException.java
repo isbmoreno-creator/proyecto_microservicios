@@ -1,4 +1,4 @@
-package com.duoc.msvehiculo.exception;
+package com.duoc.msreservas.exception;
 
 public class ResourceNotFoundException extends RuntimeException{
 

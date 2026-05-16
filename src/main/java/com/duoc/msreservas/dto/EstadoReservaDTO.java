@@ -1,4 +1,4 @@
-package com.duoc.msvehiculo.dto;
+package com.duoc.msreservas.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,13 +11,15 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoriaDTO {
+public class EstadoReservaDTO {
 
     private Long id;
     private String nombre;
     private String descripcion;
     private Boolean activo;
-    private Integer cantidadVehiculos;
-    private LocalDate fechaRegistro;
+    private Integer prioridad;
+    private LocalDate fechaEstado;
+
+    private Long reservaId;
 
 }

@@ -1,4 +1,4 @@
-package com.duoc.msvehiculo.dto;
+package com.duoc.msreservas.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoriaRequestDTO {
+public class EstadoReservaRequestDTO {
 
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 2, max = 100)
@@ -24,10 +24,13 @@ public class CategoriaRequestDTO {
 
     private Boolean activo;
 
-    @Positive(message = "La cantidad debe ser positiva")
-    private Integer cantidadVehiculos;
+    @Positive(message = "La prioridad debe ser positiva")
+    private Integer prioridad;
 
     @NotNull(message = "La fecha es obligatoria")
     @PastOrPresent(message = "La fecha no puede ser futura")
-    private LocalDate fechaRegistro;
+    private LocalDate fechaEstado;
+
+    @NotNull(message = "La reserva es obligatoria")
+    private Long reservaId;
 }
