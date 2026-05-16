@@ -4,6 +4,8 @@ package com.duoc.reportes.service;
 
 import com.duoc.reportes.dto.ReportesDTO;
 import com.duoc.reportes.dto.ReportesRequestDTO;
+import com.duoc.reportes.feing.PagoCliente;
+import com.duoc.reportes.feing.ReservaCliente;
 import com.duoc.reportes.model.ReportesModel;
 import com.duoc.reportes.repository.ReportesRespository;
 import org.slf4j.Logger;
@@ -12,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,6 +33,12 @@ public class ReportesService {
                 .collect(Collectors.toList());
 
     }
+
+    @Autowired
+    private ReservaCliente reservaCliente;
+    @Autowired
+    private PagoCliente pagoCliente;
+
 
     public ReportesDTO obtenerPorId(Integer id) {
         log.info("Obteniendo por id: {}", id);
@@ -94,6 +104,19 @@ public class ReportesService {
             return dto;
         }
 
+    public Object generarReporteConsolidado(){
+        log.info("Generando reporte consolidado");
+        List<Object> reservas = reservaCliente.obtenerReservas();
+        List<Object> pagos = pagoCliente.obtenerPagos();
+
+        Map<String, Object> consolidado = new HashMap<>();
+        consolidado.put("reservas", reservas);
+        consolidado.put("pagos", pagos);
+        consolidado.put("totalReservas", reservas.size());
+        consolidado.put("totalPagos", pagos.size());
+
+        return consolidado;
+    }
 
 
 

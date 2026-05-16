@@ -50,6 +50,10 @@ public class ReportesController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/consolidado")
+    public ResponseEntity<Object> obtenerConsolidado(){
+        return ResponseEntity.ok(reportesService.generarReporteConsolidado());
+    }
 
 
 
