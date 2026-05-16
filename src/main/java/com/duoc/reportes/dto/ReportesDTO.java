@@ -1,18 +1,10 @@
-package model;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+package com.duoc.reportes.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+public class ReportesDTO {
 
-@Entity
-@Table(name = "reporte")
-public class ReporteModel {
-
-    @Id
     private Integer id;
     private String titulo;
     private String descripcion;
@@ -38,14 +30,6 @@ public class ReporteModel {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public LocalDate getFechaGeneracion() {
-        return fechaGeneracion;
-    }
-
-    public void setFechaGeneracion(LocalDate fechaGeneracion) {
-        this.fechaGeneracion = fechaGeneracion;
     }
 
     public String getDescripcion() {
@@ -86,6 +70,14 @@ public class ReporteModel {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    public LocalDate getFechaGeneracion() {
+        return fechaGeneracion;
+    }
+
+    public void setFechaGeneracion(LocalDate fechaGeneracion) {
+        this.fechaGeneracion = fechaGeneracion;
     }
 
     public LocalDate getPeriodoInicio() {
