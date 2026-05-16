@@ -1,10 +1,10 @@
-package com.duoc.msclientes;
+package com.duoc.msvehiculo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsclientesApplicationTests {
+class MsvehiculoApplicationTests {
 
 	@Test
 	void contextLoads() {

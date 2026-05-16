@@ -1,13 +1,13 @@
-package com.duoc.msclientes;
+package com.duoc.msvehiculo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MsclientesApplication {
+public class MsvehiculoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MsclientesApplication.class, args);
+		SpringApplication.run(MsvehiculoApplication.class, args);
 	}
 
 }

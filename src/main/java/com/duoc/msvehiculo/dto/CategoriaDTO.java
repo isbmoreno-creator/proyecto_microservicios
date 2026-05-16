@@ -1,4 +1,4 @@
-package com.duoc.msclientes.dto;
+package com.duoc.msvehiculo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,15 +11,13 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DireccionDTO {
+public class CategoriaDTO {
 
     private Long id;
-    private String calle;
-    private String numero;
-    private String comuna;
-    private String region;
-    private Integer codigoPostal;
-    private Boolean activa;
+    private String nombre;
+    private String descripcion;
+    private Boolean activo;
+    private Integer cantidadVehiculos;
     private LocalDate fechaRegistro;
 
 }

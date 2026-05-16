@@ -1,4 +1,4 @@
-package com.duoc.msclientes.model;
+package com.duoc.msvehiculo.model;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -6,27 +6,22 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name="cliente")
+@Table(name="categoria")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cliente {
+public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombre;
-    private String apellido;
-    private String rut;
-    private String correo;
-    private String telefono;
-    private Integer puntos;
+    private String descripcion;
     private Boolean activo;
+    private Integer cantidadVehiculos;
     private LocalDate fechaRegistro;
 
-    @OneToMany(mappedBy = "cliente")
-    private List<Direccion> direcciones;
-
+    @OneToMany(mappedBy = "categoria")
+    private List<Vehiculo> vehiculos;
 }

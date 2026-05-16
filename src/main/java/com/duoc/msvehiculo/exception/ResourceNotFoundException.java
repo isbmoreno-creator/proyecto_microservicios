@@ -1,4 +1,4 @@
-package com.duoc.msclientes.exception;
+package com.duoc.msvehiculo.exception;
 
 public class ResourceNotFoundException extends RuntimeException{
 
