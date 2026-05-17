@@ -9,9 +9,9 @@ public class EmpleadoDTO {
     private String apellido;
     private String email;
     private String cargo;
-    private String aniosExperencia;
+    private Integer aniosExperiencia;
     private Double salario;
-    private Boolean activo;
+    private boolean activo;
     private LocalDate fechaContratacion;
 
     public int getId() {
@@ -54,12 +54,12 @@ public class EmpleadoDTO {
         this.cargo = cargo;
     }
 
-    public String getAniosExperencia() {
-        return aniosExperencia;
+    public Integer getAniosExperiencia() {
+        return aniosExperiencia;
     }
 
-    public void setAniosExperencia(String aniosExperencia) {
-        this.aniosExperencia = aniosExperencia;
+    public void setAniosExperiencia(Integer aniosExperiencia) {
+        this.aniosExperiencia = aniosExperiencia;
     }
 
     public Double getSalario() {
@@ -70,11 +70,11 @@ public class EmpleadoDTO {
         this.salario = salario;
     }
 
-    public Boolean getActivo() {
+    public boolean isActivo() {
         return activo;
     }
 
-    public void setActivo(Boolean activo) {
+    public void setActivo(boolean activo) {
         this.activo = activo;
     }
 

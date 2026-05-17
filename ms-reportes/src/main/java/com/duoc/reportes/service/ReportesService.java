@@ -106,7 +106,7 @@ public class ReportesService {
 
     public Object generarReporteConsolidado(){
         log.info("Generando reporte consolidado");
-        List<Object> reservas = reservaCliente.obtenerReservas();
+        List<Object> reservas = reservaCliente.obtenerReserva();
         List<Object> pagos = pagoCliente.obtenerPagos();
 
         Map<String, Object> consolidado = new HashMap<>();

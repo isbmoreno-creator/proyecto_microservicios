@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
-@FeignClient(name = "ms-reservas", url = "http://localhost:8083")
+@FeignClient(name = "ms-reserva", url = "http://localhost:8083")
 public interface ReservaCliente {
-    @GetMapping("/api/v1/reservas")
-    List<Object> obtenerReservas();
+    @GetMapping("/api/v1/reserva")
+    List<Object> obtenerReserva();
 }

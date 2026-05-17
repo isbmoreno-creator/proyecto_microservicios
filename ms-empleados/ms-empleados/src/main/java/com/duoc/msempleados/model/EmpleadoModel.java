@@ -6,24 +6,24 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "empleado")
-public class EmpleadosModel {
+public class EmpleadoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String nombre;
     private String apellido;
     private String email;
     private String cargo;
-    private String aniosExperencia;
+    private Integer aniosExperiencia;
     private Double salario;
-    private Boolean activo;
+    private boolean activo;
     private LocalDate fechaContratacion;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -59,12 +59,12 @@ public class EmpleadosModel {
         this.cargo = cargo;
     }
 
-    public String getAniosExperencia() {
-        return aniosExperencia;
+    public Integer getAniosExperiencia() {
+        return aniosExperiencia;
     }
 
-    public void setAniosExperencia(String aniosExperencia) {
-        this.aniosExperencia = aniosExperencia;
+    public void setAniosExperiencia(Integer aniosExperiencia) {
+        this.aniosExperiencia = aniosExperiencia;
     }
 
     public Double getSalario() {
@@ -75,11 +75,11 @@ public class EmpleadosModel {
         this.salario = salario;
     }
 
-    public Boolean getActivo() {
+    public boolean isActivo() {
         return activo;
     }
 
-    public void setActivo(Boolean activo) {
+    public void setActivo(boolean activo) {
         this.activo = activo;
     }
 
