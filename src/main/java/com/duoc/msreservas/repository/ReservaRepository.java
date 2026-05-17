@@ -1,6 +1,0 @@
-package com.duoc.msreservas.repository;
-import com.duoc.msreservas.model.Reserva;
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface ReservaRepository extends JpaRepository <Reserva, Long> {
-}

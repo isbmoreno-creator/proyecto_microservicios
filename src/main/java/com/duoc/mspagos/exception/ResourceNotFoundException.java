@@ -1,4 +1,4 @@
-package com.duoc.msreservas.exception;
+package com.duoc.mspagos.exception;
 
 public class ResourceNotFoundException extends RuntimeException{
 

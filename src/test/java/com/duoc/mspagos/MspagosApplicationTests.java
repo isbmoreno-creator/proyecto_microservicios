@@ -1,10 +1,10 @@
-package com.duoc.msreservas;
+package com.duoc.mspagos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MsreservasApplicationTests {
+class MspagosApplicationTests {
 
 	@Test
 	void contextLoads() {

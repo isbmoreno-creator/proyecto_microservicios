@@ -1,4 +1,4 @@
-package com.duoc.msreservas.dto;
+package com.duoc.mspagos.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,15 +11,21 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EstadoReservaDTO {
+public class PagosDTO {
 
     private Long id;
-    private String nombre;
-    private String descripcion;
-    private Boolean activo;
-    private Integer prioridad;
-    private LocalDate fechaEstado;
+
+    private Double monto;
+
+    private String metodoPago;
+
+    private Boolean pagado;
+
+    private LocalDate fechaPago;
+
+    private Integer numeroCuotas;
 
     private Long reservaId;
+
 
 }

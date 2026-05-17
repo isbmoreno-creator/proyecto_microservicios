@@ -1,36 +1,15 @@
-CREATE TABLE estado_reserva (
-
-     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-     nombre VARCHAR(100),
-     descripcion VARCHAR(200),
-     activo BOOLEAN,
-     prioridad INT,
-     fecha_estado DATE
+CREATE TABLE pagos (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    monto DOUBLE,
+    metodo_pago VARCHAR(100),
+    pagado BOOLEAN,
+    fecha_pago DATE,
+    numero_cuotas INT,
+    reserva_id BIGINT
 );
-CREATE TABLE reserva (
 
-      id BIGINT AUTO_INCREMENT PRIMARY KEY,
-      fecha_reserva DATE,
-      fecha_entrega DATE,
-      total DOUBLE,
-      activa BOOLEAN,
-      cantidad_dias INT,
-      estado_reserva_id BIGINT,
-
-      CONSTRAINT fk_estado_reserva
-      FOREIGN KEY (estado_reserva_id)
-      REFERENCES estado_reserva(id)
-
-);
-INSERT INTO estado_reserva
-(nombre, descripcion, activo, prioridad, fecha_estado)
+INSERT INTO pagos (monto, metodo_pago, pagado, fecha_pago, numero_cuotas, reserva_id)
 VALUES
-    ('Pendiente', 'Reserva pendiente', true, 1, CURDATE()),
-    ('Confirmada', 'Reserva confirmada', true, 2, CURDATE()),
-    ('Finalizada', 'Reserva finalizada', false, 3, CURDATE());
-
-INSERT INTO reserva
-(fecha_reserva, fecha_entrega, total, activa, cantidad_dias, estado_reserva_id)
-VALUES
-    (CURDATE(), CURDATE(), 150000, true, 3, 1),
-    (CURDATE(), CURDATE(), 300000, true, 5, 2);
+    (150000, 'Tarjeta', true, '2026-05-10', 3, 1),
+    (200000, 'Transferencia', true, '2026-05-11', 1, 2),
+    (300000, 'Efectivo', false, '2026-05-12', 2, 3);
