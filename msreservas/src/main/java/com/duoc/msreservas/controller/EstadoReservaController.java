@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/estadoReserva")
+@RequestMapping("/api/v1/estadoReserva")
 public class EstadoReservaController {
 
     @Autowired
