@@ -22,6 +22,14 @@ spring:
               uri: lb://msvehiculos
               predicates:
                 - Path=/api/categorias/**
+            - id: msreservas-reservas
+              uri: lb://msreservas
+              predicates:
+                - Path=/api/v1/reservas/**
+            - id: msreservas-estados
+              uri: lb://msreservas
+              predicates:
+                - Path=/api/v1/estados-reserva/**
 
 server:
   port: 8080
