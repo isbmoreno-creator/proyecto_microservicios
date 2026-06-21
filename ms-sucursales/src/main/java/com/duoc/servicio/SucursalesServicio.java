@@ -1,6 +1,8 @@
 package com.duoc.servicio;
 
 
+import com.duoc.cliente.ReservaCliente;
+import com.duoc.dto.ReservaDTO;
 import com.duoc.dto.SucursalesDTO;
 import com.duoc.dto.SucursalesRequestDTO;
 import com.duoc.model.RegionModel;
@@ -25,6 +27,9 @@ public class SucursalesServicio {
 
     @Autowired
     private RegionRepository regionRepository;
+
+    @Autowired
+    private ReservaCliente reservaCliente;
 
     public List<SucursalesDTO> obtenerTodos() {
         log.info("Obteniendo todos los Sucursales");
@@ -88,6 +93,11 @@ public class SucursalesServicio {
                     .stream().map(this::convertir)
                     .collect(Collectors.toList());
         }
+
+    public List<ReservaDTO> obtenerReservasPorSucursal(Integer sucursalId) {
+        log.info("Obteniendo reservas de la sucursal con id: {}", sucursalId);
+        return reservaCliente.obtenerReservasPorSucursal(sucursalId);
+    }
 
 
     public SucursalesDTO convertir(SucursalesModel sucursales) {

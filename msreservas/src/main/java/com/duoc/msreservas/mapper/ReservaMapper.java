@@ -24,6 +24,7 @@ public class ReservaMapper {
         dto.setTotal(reserva.getTotal());
         dto.setActiva(reserva.getActiva());
         dto.setCantidadDias(reserva.getCantidadDias());
+        dto.setSucursalId(reserva.getSucursalId());
 
         if(reserva.getEstadoReserva() != null){
             dto.setEstadoReservaId(reserva.getEstadoReserva().getId());
@@ -39,6 +40,7 @@ public class ReservaMapper {
         reserva.setTotal(dto.getTotal());
         reserva.setActiva(dto.getActiva());
         reserva.setCantidadDias(dto.getCantidadDias());
+        reserva.setSucursalId(dto.getSucursalId());
 
         return reserva;
     }

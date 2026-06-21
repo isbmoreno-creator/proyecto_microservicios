@@ -4,7 +4,9 @@ import com.duoc.msreservas.exception.ResourceNotFoundException;
 import com.duoc.msreservas.dto.ReservaDTO;
 import com.duoc.msreservas.dto.ReservaRequestDTO;
 import com.duoc.msreservas.mapper.ReservaMapper;
+import com.duoc.msreservas.model.EstadoReserva;
 import com.duoc.msreservas.model.Reserva;
+import com.duoc.msreservas.repository.EstadoReservaRepository;
 import com.duoc.msreservas.repository.ReservaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +27,9 @@ public class ReservaService {
     private ReservaRepository reservaRepository;
 
     @Autowired
+    private EstadoReservaRepository estadoReservaRepository;
+
+    @Autowired
     private ReservaMapper reservaMapper;
 
     public List<ReservaDTO> obtenerReservas(){
@@ -42,11 +47,25 @@ public class ReservaService {
         return listaDTO;
     }
 
+    public List<ReservaDTO> obtenerReservasPorSucursal(Integer sucursalId) {
+        log.info("Obteniendo reservas por sucursal");
+
+        List<Reserva> reservas = reservaRepository.findBySucursalId(sucursalId);
+        List<ReservaDTO> listaDTO = new ArrayList<>();
+
+        for (Reserva reserva : reservas) {
+            listaDTO.add(reservaMapper.toDTO(reserva));
+        }
+
+        return listaDTO;
+    }
+
     public ReservaDTO guardarReserva(ReservaRequestDTO dto){
 
         log.info("Guardando reserva");
 
         Reserva reserva = reservaMapper.toEntity(dto);
+        reserva.setEstadoReserva(obtenerEstadoReserva(dto.getEstadoReservaId()));
 
         Reserva guardada = reservaRepository.save(reserva);
 
@@ -81,6 +100,8 @@ public class ReservaService {
         reserva.setTotal(dto.getTotal());
         reserva.setActiva(dto.getActiva());
         reserva.setCantidadDias(dto.getCantidadDias());
+        reserva.setSucursalId(dto.getSucursalId());
+        reserva.setEstadoReserva(obtenerEstadoReserva(dto.getEstadoReservaId()));
 
         Reserva actualizada = reservaRepository.save(reserva);
 
@@ -98,5 +119,10 @@ public class ReservaService {
         }
 
         reservaRepository.delete(reserva);
+    }
+
+    private EstadoReserva obtenerEstadoReserva(Long estadoReservaId) {
+        return estadoReservaRepository.findById(estadoReservaId)
+                .orElseThrow(() -> new ResourceNotFoundException("Estado de reserva no encontrado"));
     }
 }

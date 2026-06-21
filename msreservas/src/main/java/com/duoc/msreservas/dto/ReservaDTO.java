@@ -23,6 +23,7 @@ public class ReservaDTO {
     private Integer cantidadDias;
 
     private Long estadoReservaId;
+    private Integer sucursalId;
 
 
 }

@@ -25,6 +25,14 @@ public class ReservaController {
         return ResponseEntity.ok(reservaService.obtenerReservas());
     }
 
+    @GetMapping("/sucursal/{sucursalId}")
+    public ResponseEntity<List<ReservaDTO>> listarReservasPorSucursal(
+            @PathVariable Integer sucursalId) {
+
+        return ResponseEntity.ok(
+                reservaService.obtenerReservasPorSucursal(sucursalId));
+    }
+
     @PostMapping
     public ResponseEntity<ReservaDTO> guardarReserva(
             @Valid @RequestBody ReservaRequestDTO dto) {

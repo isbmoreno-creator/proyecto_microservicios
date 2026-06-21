@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -30,6 +31,13 @@ public class ReportesController {
         ReportesDTO dto = reportesService.obtenerPorId(id);
         if (dto == null)return ResponseEntity.notFound().build();
         return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("/activos")
+    public ResponseEntity<List<ReportesDTO>> activosPorPeriodo(
+            @RequestParam LocalDate desde,
+            @RequestParam LocalDate hasta) {
+        return ResponseEntity.ok(reportesService.obtenerActivosPorPeriodo(desde, hasta));
     }
 
     @PostMapping

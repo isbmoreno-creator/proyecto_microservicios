@@ -1,6 +1,7 @@
 package com.duoc.controller;
 
 
+import com.duoc.dto.ReservaDTO;
 import com.duoc.dto.SucursalesDTO;
 import com.duoc.dto.SucursalesRequestDTO;
 import com.duoc.servicio.SucursalesServicio;
@@ -50,6 +51,11 @@ public class SucursalesController {
     @GetMapping("/operativas")
     public ResponseEntity<List<SucursalesDTO>> operativas(){
         return ResponseEntity.ok(sucursalesServicio.obtenerOperativas());
+    }
+
+    @GetMapping("/{id}/reservas")
+    public ResponseEntity<List<ReservaDTO>> reservasPorSucursal(@PathVariable Integer id) {
+        return ResponseEntity.ok(sucursalesServicio.obtenerReservasPorSucursal(id));
     }
 
 }

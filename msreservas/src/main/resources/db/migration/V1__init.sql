@@ -15,6 +15,7 @@ CREATE TABLE reserva (
       total DOUBLE,
       activa BOOLEAN,
       cantidad_dias INT,
+      sucursal_id INT,
       estado_reserva_id BIGINT,
 
       CONSTRAINT fk_estado_reserva
@@ -30,7 +31,7 @@ VALUES
     ('Finalizada', 'Reserva finalizada', false, 3, CURDATE());
 
 INSERT INTO reserva
-(fecha_reserva, fecha_entrega, total, activa, cantidad_dias, estado_reserva_id)
+(fecha_reserva, fecha_entrega, total, activa, cantidad_dias, sucursal_id, estado_reserva_id)
 VALUES
-    (CURDATE(), CURDATE(), 150000, true, 3, 1),
-    (CURDATE(), CURDATE(), 300000, true, 5, 2);
+    (CURDATE(), CURDATE(), 150000, true, 3, 1, 1),
+    (CURDATE(), CURDATE(), 300000, true, 5, 2, 2);

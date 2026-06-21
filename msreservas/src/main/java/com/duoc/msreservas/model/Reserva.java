@@ -20,6 +20,7 @@ public class Reserva {
     private Double total;
     private Boolean activa;
     private Integer cantidadDias;
+    private Integer sucursalId;
 
     @ManyToOne
     @JoinColumn(name = "estado_reserva_id")

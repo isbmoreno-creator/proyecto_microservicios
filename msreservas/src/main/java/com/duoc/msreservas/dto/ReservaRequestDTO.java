@@ -31,4 +31,7 @@ public class ReservaRequestDTO {
 
     @NotNull(message = "El estado de reserva es obligatorio")
     private Long estadoReservaId;
+
+    @NotNull(message = "La sucursal es obligatoria")
+    private Integer sucursalId;
 }

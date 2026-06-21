@@ -49,6 +49,14 @@ public class ReportesService {
         }
         return convertir(reporte);
     }
+
+    public List<ReportesDTO> obtenerActivosPorPeriodo(LocalDate desde, LocalDate hasta) {
+        log.info("Obteniendo reportes activos entre {} y {}", desde, hasta);
+        return reportesRespository.buscarReportesActivosPorPeriodo(desde, hasta).stream()
+                .map(this::convertir)
+                .collect(Collectors.toList());
+    }
+
     public ReportesDTO guardar(ReportesRequestDTO dto) {
         log.info("Guardando nuevo reporte");
         ReportesModel reporte = new ReportesModel();

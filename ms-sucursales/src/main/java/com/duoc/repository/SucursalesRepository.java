@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface SucursalesRepository extends JpaRepository<SucursalesModel, Integer> {
-    @Query(value =  "SELECT * FROM sucursal WHERE operativa = true ORDER BY nombre ASC", nativeQuery = true)
+    @Query("SELECT s FROM SucursalesModel s WHERE s.operativa = true ORDER BY s.nombre ASC")
     List<SucursalesModel> findSucursalesOperativasOrdenadas();
 }
