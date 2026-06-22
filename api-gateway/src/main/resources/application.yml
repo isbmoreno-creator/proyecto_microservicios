@@ -3,22 +3,33 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      server:
+        webflux:
           routes:
             - id: msclientes-clientes
               uri: lb://msclientes
               predicates:
-                - Path=/clientes/**
+                - Path=/api/clientes/**
             - id: msclientes-direcciones
               uri: lb://msclientes
               predicates:
-                - Path=/direcciones/**
+                - Path=/api/direcciones/**
             - id: msvehiculos-vehiculos
               uri: lb://msvehiculos
               predicates:
-                - Path=/vehiculos/**
+                - Path=/api/vehiculos/**
             - id: msvehiculos-categorias
               uri: lb://msvehiculos
               predicates:
+                - Path=/api/categorias/**
+            - id: msreservas-reservas
+              uri: lb://msreservas
+              predicates:
+                - Path=/api/v1/reservas/**
+            - id: msreservas-estados
+              uri: lb://msreservas
+              predicates:
+                - Path=/api/v1/estados-reserva/**
                 - Path=/categorias/**
 
 server:
