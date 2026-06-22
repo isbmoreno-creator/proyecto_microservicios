@@ -5,6 +5,11 @@ import org.springframework.hateoas.CollectionModel;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.Parameter;
 
 import com.duoc.msreservas.dto.ReservaDTO;
 import com.duoc.msreservas.dto.ReservaRequestDTO;
@@ -20,11 +25,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/reservas")
+@Tag(name = "Reservas", description = "API de gestión de reservas")
 public class ReservaController {
 
     @Autowired
     private ReservaService reservaService;
 
+    @Operation(summary = "Listar todas las reservas")
+    @ApiResponse(responseCode = "200", description = "Se han obtenido la lista de reservas correctamente")
     @GetMapping
     public ResponseEntity<CollectionModel<EntityModel<ReservaDTO>>> listarReservas() {
     List<ReservaDTO> reservas = reservaService.obtenerReservas();
@@ -43,6 +51,10 @@ public class ReservaController {
         return ResponseEntity.ok(coleccion);
     }
 
+    @Operation(summary = "Obtener reservas por sucursal")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Las reservas han sido encontradas"),
+            @ApiResponse(responseCode = "404", description = "No se han encontrado las reservas")})
     @GetMapping("/sucursal/{sucursalId}")
     public ResponseEntity<List<ReservaDTO>> listarReservasPorSucursal(
             @PathVariable Integer sucursalId) {
@@ -51,6 +63,10 @@ public class ReservaController {
                 reservaService.obtenerReservasPorSucursal(sucursalId));
     }
 
+    @Operation(summary = "Crear una nueva reserva")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "La reserva ha sido creada correctamente"),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos")})
     @PostMapping
     public ResponseEntity<EntityModel<ReservaDTO>> guardarReserva(
             @Valid @RequestBody ReservaRequestDTO dto) {
@@ -67,6 +83,11 @@ public class ReservaController {
                 .body(recurso);
     }
 
+    @Operation(summary = "Buscar una reserva por ID")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "La reserva ha sido encontrada"),
+            @ApiResponse(responseCode = "404", description = "No se ha encontrado la reserva")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<EntityModel<ReservaDTO>> obtenerReservaPorId(
             @PathVariable Long id) {
@@ -81,6 +102,12 @@ public class ReservaController {
         return ResponseEntity.ok(recurso);
     }
 
+    @Operation(summary = "Actualizar una reserva")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Se ha actualizado la reserva"),
+            @ApiResponse(responseCode = "404", description = "No se ha encontrado la reserva"),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos")
+    })
     @PutMapping("/{id}")
     public ResponseEntity<EntityModel<ReservaDTO>> actualizarReserva(
             @PathVariable Long id,
@@ -98,6 +125,11 @@ public class ReservaController {
         return ResponseEntity.ok(recurso);
     }
 
+    @Operation(summary = "Eliminar una reserva")
+    @ApiResponses({
+            @ApiResponse(responseCode = "204", description = "Se ha eliminado la reserva"),
+            @ApiResponse(responseCode = "404", description = "No se ha encontrado la reserva")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarReserva(
             @PathVariable Long id) {
